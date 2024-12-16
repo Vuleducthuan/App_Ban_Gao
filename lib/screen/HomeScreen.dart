@@ -1,64 +1,57 @@
 import 'package:flutter/material.dart';
 
-class Homescreen extends StatelessWidget {
-  const Homescreen({super.key, required String title});
+class Homescreen extends StatefulWidget {
+  const Homescreen({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<Homescreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<Homescreen> {
+  int _currentIndex = 0;
+
+  // Các trang con
+  final List<Widget> _pages = [
+    const Center(child: Text('Trang Chủ')),
+    const Center(child: Text('Giỏ Hàng')),
+    const Center(child: Text('Cài Đặt')),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'App Bán Gạo',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 24,
-          ),
-        ),
-        backgroundColor: Colors.pink[50],
+        title: Text(widget.title),
+        backgroundColor: Colors.pink[100],
       ),
-      body: const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Text(
-                'Đề Xuất',
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 20,
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Text(
-                'Carousel',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Text(
-                'Bán Chạy',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Carousel',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          )),
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Trang Chủ',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: 'Giỏ Hàng',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Cài Đặt',
+          ),
+        ],
+        currentIndex: _currentIndex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.white,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
     );
   }
 }
