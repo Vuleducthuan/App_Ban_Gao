@@ -12,11 +12,13 @@ class Homescreen extends StatefulWidget {
 class _HomeScreenState extends State<Homescreen> {
   int _currentIndex = 0;
 
-  // Các trang con
   final List<Widget> _pages = [
     const Center(child: Text('Trang Chủ')),
     const Center(child: Text('Giỏ Hàng')),
     const Center(child: Text('Cài Đặt')),
+    const Center(
+      child: Text('Gioi Thieu'),
+    )
   ];
 
   @override
@@ -34,12 +36,20 @@ class _HomeScreenState extends State<Homescreen> {
             label: 'Trang Chủ',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Tài KKhoản',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Tìm Kiếm',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
             label: 'Giỏ Hàng',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Cài Đặt',
+            icon: Icon(Icons.menu),
+            label: 'Menu',
           ),
         ],
         currentIndex: _currentIndex,
