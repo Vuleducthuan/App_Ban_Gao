@@ -51,6 +51,10 @@ class _HomeScreenState extends State<Homescreen> {
             icon: Icon(Icons.menu),
             label: 'Menu',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: 'Menu',
+          ),
         ],
         currentIndex: _currentIndex,
         selectedItemColor: Colors.green,
